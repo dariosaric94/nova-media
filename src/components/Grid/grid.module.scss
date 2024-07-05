@@ -1,0 +1,87 @@
+$breakpoints: (
+    xs: 0,
+    sm: 600px,
+    md: 960px,
+    lg: 1280px,
+    xl: 1920px
+);
+
+@mixin breakpoint($name) {
+    @media (min-width: map-get($breakpoints, $name)) {
+        @content;
+    }
+}
+
+.gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(var(--gap, 0) / -2);
+
+    >div {
+        padding: calc(var(--gap, 0) / 2);
+    }
+}
+
+.gridItem {
+    box-sizing: border-box;
+
+    // Default to 100% width
+    flex: 0 1 100%;
+    max-width: 100%;
+
+    // Breakpoints
+    @include breakpoint(xs) {
+        @for $i from 1 through 12 {
+            &.xs-#{$i} {
+                $basis: (
+                    calc(100 / 12)) * $i * 1%;
+                flex: 0 1 $basis;
+                max-width: $basis;
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        @for $i from 1 through 12 {
+            &.sm-#{$i} {
+                $basis: (
+                    calc(100 / 12)) * $i * 1%;
+                flex: 0 1 $basis;
+                max-width: $basis;
+            }
+        }
+    }
+
+    @include breakpoint(md) {
+        @for $i from 1 through 12 {
+            &.md-#{$i} {
+                $basis: (
+                    calc(100 / 12)) * $i * 1%;
+                flex: 0 1 $basis;
+                max-width: $basis;
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        @for $i from 1 through 12 {
+            &.lg-#{$i} {
+                $basis: (
+                    calc(100 / 12)) * $i * 1%;
+                flex: 0 1 $basis;
+                max-width: $basis;
+            }
+        }
+    }
+
+    @include breakpoint(xl) {
+        @for $i from 1 through 12 {
+            &.xl-#{$i} {
+                $basis: (
+                    calc(100 / 12)) * $i * 1%;
+                flex: 0 1 $basis;
+                max-width: $basis;
+            }
+        }
+    }
+}
